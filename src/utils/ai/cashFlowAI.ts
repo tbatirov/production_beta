@@ -1,6 +1,8 @@
 import { FinancialData } from '../types';
 import { logger } from '../logger';
 import { getAISettings, getOpenAIKey } from '../settings/apiSettings';
+import i18n from '../i18n';
+
 
 export async function analyzeCashFlow(data: FinancialData) {
   const aiSettings = getAISettings();
@@ -63,7 +65,7 @@ CRITICAL RULES:
    Investing terms: equipment, property, investment, acquisition, asset
    Financing terms: loan, dividend, capital, share, borrowing
 
-Return JSON in this exact format:
+Return JSON in this exact format in "${i18n.language}" language:
 {
   "cashFlow": {
     "date": "ISO date string",

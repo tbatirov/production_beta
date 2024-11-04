@@ -1,6 +1,8 @@
 import { FinancialData } from '../types';
 import { logger } from '../logger';
 import { getAISettings, getOpenAIKey } from '../settings/apiSettings';
+import i18n from '../i18n';
+
 
 export async function analyzeTrialBalance(data: FinancialData) {
   const aiSettings = getAISettings();
@@ -60,7 +62,7 @@ export async function analyzeTrialBalance(data: FinancialData) {
    - Assets = Liabilities + Equity
    - Net Income = Revenue - Expenses
 
-Return JSON in this exact format:
+Return JSON in this exact format and in "${i18n.language}" language:
 {
   "balanceSheet": {
     "date": "ISO date string",

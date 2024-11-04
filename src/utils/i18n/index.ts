@@ -1,7 +1,7 @@
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
-import { translationListener } from './translationListener';
+// import { translationListener } from './translationListener';
 
 // Initialize i18next with the translation listener
 i18next
@@ -20,5 +20,5 @@ i18next
     }
   });
 
-export { translationListener };
+// export { translationListener };
 export default i18next;

@@ -2,6 +2,8 @@ import { FinancialData, GeneratedStatements } from '../types';
 import { logger } from '../logger';
 import { analyzeTrialBalance } from './balanceSheetAI';
 import { analyzeCashFlow } from './cashFlowAI';
+import i18n from '../i18n';
+
 
 export async function processFinancialData(
   data: FinancialData,

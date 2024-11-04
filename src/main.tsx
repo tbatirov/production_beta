@@ -9,11 +9,11 @@ import './index.css';
 const root = createRoot(document.getElementById('root')!);
 
 root.render(
-  <StrictMode>
+  // <StrictMode>
     <ErrorBoundary>
       <AuthProvider>
         <App />
       </AuthProvider>
     </ErrorBoundary>
-  </StrictMode>
+  // </StrictMode>
 );

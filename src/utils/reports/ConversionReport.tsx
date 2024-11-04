@@ -83,7 +83,7 @@ export default function ConversionReport({ originalData, statements }: Conversio
                 <p className="text-lg font-semibold">
                   {statements.balanceSheet.sections.assets.total.toLocaleString('en-US', {
                     style: 'currency',
-                    currency: 'USD'
+                    currency: 'UZS'
                   })}
                 </p>
               </div>
@@ -95,7 +95,7 @@ export default function ConversionReport({ originalData, statements }: Conversio
                     statements.balanceSheet.sections.equity.total
                   ).toLocaleString('en-US', {
                     style: 'currency',
-                    currency: 'USD'
+                    currency: 'UZS'
                   })}
                 </p>
               </div>
@@ -113,7 +113,7 @@ export default function ConversionReport({ originalData, statements }: Conversio
                 <p className="text-lg font-semibold">
                   {statements.incomeStatement.sections.revenue.total.toLocaleString('en-US', {
                     style: 'currency',
-                    currency: 'USD'
+                    currency: 'UZS'
                   })}
                 </p>
               </div>
@@ -122,7 +122,7 @@ export default function ConversionReport({ originalData, statements }: Conversio
                 <p className="text-lg font-semibold">
                   {statements.incomeStatement.total.toLocaleString('en-US', {
                     style: 'currency',
-                    currency: 'USD'
+                    currency: 'UZS'
                   })}
                 </p>
               </div>
@@ -140,7 +140,7 @@ export default function ConversionReport({ originalData, statements }: Conversio
                 <p className="text-lg font-semibold">
                   {statements.cashFlow.sections.operating.total.toLocaleString('en-US', {
                     style: 'currency',
-                    currency: 'USD'
+                    currency: 'UZS'
                   })}
                 </p>
               </div>
@@ -149,7 +149,7 @@ export default function ConversionReport({ originalData, statements }: Conversio
                 <p className="text-lg font-semibold">
                   {statements.cashFlow.sections.investing.total.toLocaleString('en-US', {
                     style: 'currency',
-                    currency: 'USD'
+                    currency: 'UZS'
                   })}
                 </p>
               </div>
@@ -158,7 +158,7 @@ export default function ConversionReport({ originalData, statements }: Conversio
                 <p className="text-lg font-semibold">
                   {statements.cashFlow.sections.financing.total.toLocaleString('en-US', {
                     style: 'currency',
-                    currency: 'USD'
+                    currency: 'UZS'
                   })}
                 </p>
               </div>
@@ -180,13 +180,13 @@ export default function ConversionReport({ originalData, statements }: Conversio
               <p className="text-gray-600">
                 {statements.balanceSheet.sections.assets.total.toLocaleString('en-US', {
                   style: 'currency',
-                  currency: 'USD'
+                  currency: 'UZS'
                 })} = {(
                   statements.balanceSheet.sections.liabilities.total +
                   statements.balanceSheet.sections.equity.total
                 ).toLocaleString('en-US', {
                   style: 'currency',
-                  currency: 'USD'
+                  currency: 'UZS'
                 })}
               </p>
               <p className="text-sm text-gray-500">
@@ -196,7 +196,7 @@ export default function ConversionReport({ originalData, statements }: Conversio
                    statements.balanceSheet.sections.equity.total)
                 ).toLocaleString('en-US', {
                   style: 'currency',
-                  currency: 'USD'
+                  currency: 'UZS'
                 })}
               </p>
             </div>

@@ -30,7 +30,7 @@
     "exportToExcel": "Export to Excel",
     "exportToPDF": "Export to PDF",
     "exportToWord": "Export to Word",
-    "comprehensiveReport": "Comprehensive Analysis Report",
+    "comprehensiveReport": "Comprehensive Report",
     "total": "Total",
     "date": "Date",
     "amount": "Amount",
@@ -85,7 +85,8 @@
     "custom": "Custom",
     "all": "All",
     "none": "None",
-    "other": "Other"
+    "other": "Other",
+    "exportError": "Export error occurred"
   },
   "auth": {
     "signIn": "Sign In",
@@ -121,8 +122,39 @@
       "passwordMismatch": "Passwords do not match",
       "accountLocked": "Account is locked",
       "tooManyAttempts": "Too many attempts, please try again later",
-      "unknownError": "An unknown error occurred"
-    }
+      "unknownError": "An unknown error occurred",
+      "authCallbackError": "Authentication callback error occurred",
+      "acceptTerms": "You must accept the terms"
+    },
+    "processingAuth": "Processing authentication...",
+    "noAccount": "No account found with this email.",
+    "emailPlaceholder": "Enter your email",
+    "passwordPlaceholder": "Enter your password",
+    "setNewPassword": "Set New Password",
+    "setNewPasswordInstructions": "Please set a new password for your account.",
+    "newPassword": "New Password",
+    "newPasswordPlaceholder": "Enter your new password",
+    "updatePassword": "Update Password",
+    "unknownError": "An unknown error occurred",
+    "resetPasswordInstructions": "Follow the instructions sent to your email to reset your password.",
+    "resetPasswordSuccess": "Password reset successful!",
+    "sendResetLink": "Send Reset Link",
+    "backToSignIn": "Back to Sign In",
+    "signInInstead": "Sign in instead",
+    "fullNamePlaceholder": "Enter your full name",
+    "company": "Company",
+    "companyPlaceholder": "Enter your company name",
+    "confirmPasswordPlaceholder": "Confirm your password",
+    "passwordRequirements": {
+      "title": "Password Requirements",
+      "length": "At least 8 characters",
+      "uppercase": "At least one uppercase letter",
+      "lowercase": "At least one lowercase letter",
+      "number": "At least one number",
+      "special": "At least one special character"
+    },
+    "acceptTerms": "I accept the terms and conditions",
+    "termsAndConditions": "Terms and Conditions"
   },
   "company": {
     "noCompanySelected": "No company selected",
@@ -169,6 +201,16 @@
     "selectPeriod1": "Select First Period",
     "selectPeriod2": "Select Second Period",
     "noComparisonAvailable": "No comparison data available",
+    "impact":{
+      "low":"Low Impact",
+      "medium":"Medium Impact",
+      "high":"High Impact"
+    },
+    "complexity":{
+      "low":"Low Complexity",
+      "medium":"Medium Complexity",
+      "high":"High Complexity"
+    },
     "trends": {
       "title": "Trend Analysis",
       "noData": "No trend data available",
@@ -239,7 +281,26 @@
     "liabilityAnalysis": "Liability Analysis",
     "operatingAnalysis": "Operating Analysis",
     "investmentAnalysis": "Investment Analysis",
-    "financingAnalysis": "Financing Analysis"
+    "financingAnalysis": "Financing Analysis",
+    "missingStatements": "Missing financial statements",
+    "missingStatementsDesc": "Financial statements are required for analysis.",
+    "aboveBenchmark": "Above benchmark",
+    "belowBenchmark": "Below benchmark",
+    "strategicRecommendations": "Strategic recommendations",
+    "requiredResources": "Required resources",
+    "industryContext": "Industry context",
+    "immediateActions": "Immediate actions",
+    "shortTermActions": "Short-term actions",
+    "longTermActions": "Long-term actions",
+    "previousPeriod": "Previous period",
+    "noData": "No data",
+    "selectPeriod": "Select a period",
+    "selectPeriodsToCompare": "Select periods to compare",
+    "selectTwoPeriodsDescription": "Select two periods to compare financial metrics",
+    "trendAnalysis": "Trend analysis",
+    "contributingFactors": "Contributing factors",
+    "percentageChange": "Percentage change",
+    "comprehensiveReport": "Comprehensive report"
   },
   "statements": {
     "balanceSheet": "Balance Sheet",
@@ -332,5 +393,71 @@
     "marginalVaR": "Marginal VaR",
     "relativeVaR": "Relative VaR",
     "absoluteVaR": "Absolute VaR"
-  }
+  },
+  "access_token": "Access Token",
+  "refresh_token": "Refresh Token",
+  "dashboard": {
+    "noAnalysis": "No analysis available",
+    "noAnalysisDesc": "There are no analyses available for this company.",
+    "currentAnalysis": "Current Analysis",
+    "historicalAnalysis": "Historical Analysis",
+    "monthToMonth": "Month to Month",
+    "trendAnalysis": "Trend Analysis",
+    "noStatements": "No financial statements available",
+    "noStatementsDesc": "Please upload financial statements to proceed.",
+    "selectCompany": "Select a company"
+  },
+  "companies": {
+    "edit": "Edit Company",
+    "add": "Add Company",
+    "form": {
+      "name": "Company Name",
+      "industry": "Industry",
+      "description": "Description",
+      "email": "Email",
+      "phone": "Phone"
+    },
+    "confirmDelete": "Are you sure you want to delete this company?",
+    "title": "Companies",
+    "addNew": "Add New Company",
+    "noCompanies": "No Companies Found",
+    "getStarted": "Get Started",
+    "addFirst": "Add your first company"
+  },
+  "sections": {
+    "assets": "Assets",
+    "liabilities": "Liabilities",
+    "equity": "Equity",
+    "revenue": "Revenue",
+    "expenses": "Expenses",
+    "netIncome": "Net Income",
+    "operating": "Operating Activities",
+    "investing": "Investing Activities",
+    "financing": "Financing Activities"
+  },
+  "upload": {
+    "dropzone": "Drop files here or click to select",
+    "changeFile": "Change File",
+    "selectFile": "Select File",
+    "previewData": "Preview Data",
+    "processingError": "Error processing file",
+    "noFilesSelected": "No files selected",
+    "title": "Upload Financial Data",
+    "subtitle": "Upload your trial balance or transactions",
+    "trialBalance": "Trial Balance",
+    "trialBalanceHint": "Upload an Excel file containing your trial balance",
+    "transactions": "Transactions",
+    "transactionsHint": "Upload an Excel file containing your transactions",
+    "generateStatements": "Generate Statements"
+  },
+  "settings": {
+    "title": "Settings"
+  },
+  "cashFlow": {
+    "beginningBalance": "Beginning Balance",
+    "endingBalance": "Ending Balance"
+  },
+  "excel": "Excel",
+  "pdf": "PDF",
+  "comprehensive": "Comprehensive Report"
 }

@@ -2,6 +2,8 @@ import { FinancialData } from '../types';
 import { logger } from '../logger';
 import { getAISettings, getOpenAIKey } from '../settings/apiSettings';
 import i18next from 'i18next';
+import i18n from '../i18n';
+
 
 async function makeOpenAIRequest(prompt: string, data: any) {
   const aiSettings = getAISettings();

@@ -1,6 +1,8 @@
 import { FinancialData } from '../types';
 import { logger } from '../logger';
 import { getAISettings, getOpenAIKey } from '../settings/apiSettings';
+import i18n from '../i18n';
+
 
 export async function analyzeCashFlow(data: FinancialData) {
   const aiSettings = getAISettings();
@@ -14,7 +16,7 @@ export async function analyzeCashFlow(data: FinancialData) {
     throw new Error('OpenAI API key is not configured');
   }
 
-  const CASH_FLOW_PROMPT = `Analyze the transaction data and return a JSON object with this exact structure:
+  const CASH_FLOW_PROMPT = `Analyze the transaction data and return a JSON object with this exact structure in "${i18n.language}" language:
 {
   "cashFlow": {
     "date": "ISO date string",

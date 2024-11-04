@@ -6,7 +6,7 @@ import { GeneratedStatements } from './types';
 function formatAmount(amount: number): string {
   return new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: 'USD',
+    currency: 'UZS',
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   }).format(amount);

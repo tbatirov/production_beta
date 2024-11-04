@@ -2,6 +2,8 @@ import { logger } from '../logger';
 import { getAISettings, getOpenAIKey } from '../settings/apiSettings';
 import { FinancialRatios } from '../types';
 import { ratioBenchmarks } from '../../components/analysis/RatioBenchmarks';
+import i18n from '../i18n';
+
 
 interface RecommendationResponse {
   recommendations: {
@@ -47,7 +49,7 @@ export async function generateStrategicRecommendations(
   }
 
   try {
-    const prompt = `Analyze the following financial ratios for a company in the ${industry} industry and provide strategic recommendations:
+    const prompt = `Analyze the following financial ratios for a company in the ${industry} industry and provide strategic recommendations in "${i18n.language}" language:
 
 Current Ratios:
 ${JSON.stringify(ratios, null, 2)}
@@ -102,7 +104,7 @@ Ensure recommendations are:
         Authorization: `Bearer ${OPENAI_API_KEY}`,
       },
       body: JSON.stringify({
-        model: aiSettings.model || 'gpt-4',
+        model: 'gpt-4o',
         messages: [
           {
             role: 'system',
@@ -131,7 +133,7 @@ Ensure recommendations are:
     }
 
     const recommendations = JSON.parse(content);
-    logger.info('Strategic recommendations generated successfully');
+    logger.info('Strategic recommendations generated successfully',recommendations);
     
     return recommendations;
   } catch (error) {
@@ -145,18 +147,19 @@ const recommendationsCache = new Map<string, { data: RecommendationResponse; tim
 const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 hours
 
 export async function getCachedRecommendations(
+  id: string,
   ratios: FinancialRatios,
   industry: string
 ): Promise<RecommendationResponse> {
-  const cacheKey = `${JSON.stringify(ratios)}-${industry}`;
+  const cacheKey = id;
   const cached = recommendationsCache.get(cacheKey);
-
   if (cached && Date.now() - cached.timestamp < CACHE_DURATION) {
     logger.info('Using cached recommendations');
     return cached.data;
   }
 
   try {
+    console.log('AI REQUEST STARTING!!!!!!!',id)
     const recommendations = await generateStrategicRecommendations(ratios, industry);
     recommendationsCache.set(cacheKey, {
       data: recommendations,

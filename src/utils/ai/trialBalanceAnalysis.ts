@@ -1,6 +1,8 @@
 import { FinancialData } from '../types';
 import { logger } from '../logger';
 import { getAISettings, getOpenAIKey } from '../settings/apiSettings';
+import i18n from '../i18n';
+
 
 export async function analyzeTrialBalance(data: FinancialData) {
   const aiSettings = getAISettings();
@@ -27,7 +29,7 @@ export async function analyzeTrialBalance(data: FinancialData) {
       cleanedData
     );
 
-    const TRIAL_BALANCE_PROMPT = `Analyze the trial balance data and return a JSON object with this exact structure:
+    const TRIAL_BALANCE_PROMPT = `Analyze the trial balance data and return a JSON object with this exact structure in "${i18n.language}" language:
 {
   "balanceSheet": {
     "date": "ISO date string",

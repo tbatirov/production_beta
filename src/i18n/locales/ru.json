@@ -30,7 +30,7 @@
     "exportToExcel": "Экспорт в Excel",
     "exportToPDF": "Экспорт в PDF",
     "exportToWord": "Экспорт в Word",
-    "comprehensiveReport": "Комплексный аналитический отчет",
+    "comprehensiveReport": "Комплексный отчет",
     "total": "Итого",
     "date": "Дата",
     "amount": "Сумма",
@@ -85,7 +85,8 @@
     "custom": "Пользовательский",
     "all": "Все",
     "none": "Ничего",
-    "other": "Другое"
+    "other": "Другое",
+    "exportError": "Произошла ошибка экспорта"
   },
   "auth": {
     "signIn": "Войти",
@@ -117,12 +118,43 @@
       "authRequired": "Требуется авторизация",
       "sessionExpired": "Сессия истекла, пожалуйста, войдите снова",
       "invalidEmail": "Неверный email адрес",
-      "weakPassword": "Слишком слабый пароль",
+      "weakPassword": "Пароль слишком слабый",
       "passwordMismatch": "Пароли не совпадают",
       "accountLocked": "Аккаунт заблокирован",
       "tooManyAttempts": "Слишком много попыток, попробуйте позже",
-      "unknownError": "Произошла неизвестная ошибка"
-    }
+      "unknownError": "Произошла неизвестная ошибка",
+      "authCallbackError": "Ошибка обратного вызова аутентификации",
+      "acceptTerms": "Вы должны принять условия"
+    },
+    "processingAuth": "Обработка аутентификации...",
+    "noAccount": "Аккаунт не найден с этим email.",
+    "emailPlaceholder": "Введите ваш email",
+    "passwordPlaceholder": "Введите ваш пароль",
+    "setNewPassword": "Установить новый пароль",
+    "setNewPasswordInstructions": "Пожалуйста, установите новый пароль для вашего аккаунта.",
+    "newPassword": "Новый пароль",
+    "newPasswordPlaceholder": "Введите ваш новый пароль",
+    "updatePassword": "Обновить пароль",
+    "unknownError": "Произошла неизвестная ошибка",
+    "resetPasswordInstructions": "Следуйте инструкциям, отправленным на ваш email, чтобы сбросить пароль.",
+    "resetPasswordSuccess": "Пароль успешно сброшен!",
+    "sendResetLink": "Отправить ссылку для сброса пароля",
+    "backToSignIn": "Назад к входу",
+    "signInInstead": "Войти вместо этого",
+    "fullNamePlaceholder": "Введите ваше полное имя",
+    "company": "Компания",
+    "companyPlaceholder": "Введите название компании",
+    "confirmPasswordPlaceholder": "Подтвердите ваш пароль",
+    "passwordRequirements": {
+      "title": "Требования к паролю",
+      "length": "Не менее 8 символов",
+      "uppercase": "Хотя бы одна заглавная буква",
+      "lowercase": "Хотя бы одна строчная буква",
+      "number": "Хотя бы одна цифра",
+      "special": "Хотя бы один специальный символ"
+    },
+    "acceptTerms": "Я принимаю условия и положения",
+    "termsAndConditions": "Условия и положения"
   },
   "company": {
     "noCompanySelected": "Компания не выбрана",
@@ -169,6 +201,7 @@
     "selectPeriod1": "Выберите первый период",
     "selectPeriod2": "Выберите второй период",
     "noComparisonAvailable": "Нет данных для сравнения",
+    
     "trends": {
       "title": "Анализ трендов",
       "noData": "Нет данных о трендах",
@@ -207,7 +240,6 @@
     "keyFindings": "Ключевые выводы",
     "detailedAnalysis": "Детальный анализ",
     "benchmark": "Эталон",
-    "benchmarkComparison": "Сравнение с эталоном",
     "industryAverage": "Среднее по отрасли",
     "peerComparison": "Сравнение с конкурентами",
     "historicalTrends": "Исторические тренды",
@@ -266,6 +298,88 @@
     "contributingFactors": "Влияющие факторы",
     "strategicRecommendations": "Стратегические рекомендации",
     "missingStatements": "Отсутствуют финансовые отчеты",
-    "missingStatementsDesc": "Для проведения анализа необходимы балансовый отчет и отчет о прибылях и убытках"
-  }
+    "missingStatementsDesc": "Для проведения анализа необходимы балансовый отчет и отчет о прибылях и убытках",
+    "selectPeriod": "Выберите период",
+    "trendAnalysis": "Анализ трендов",
+    "comprehensiveReport": "Комплексный отчет"
+  },
+  "metrics": {
+    "profitability": "Рентабельность",
+    "liquidity": "Ликвидность",
+    "efficiency": "Эффективность",
+    "leverage": "Финансовый рычаг"
+  },
+  "statements": {
+    "financialStatements": "Финансовые отчеты",
+    "financialAnalysis": "Финансовый анализ",
+    "balanceSheet": "Балансовый отчет",
+    "incomeStatement": "Отчет о прибылях и убытках",
+    "cashFlow": "Отчет о движении денежных средств"
+  },
+  "access_token": "Токен доступа",
+  "refresh_token": "Токен обновления",
+  "dashboard": {
+    "noAnalysis": "Нет доступного анализа",
+    "noAnalysisDesc": "Нет доступных анализов для этой компании.",
+    "currentAnalysis": "Текущий анализ",
+    "historicalAnalysis": "Исторический анализ",
+    "monthToMonth": "Месяц к месяцу",
+    "trendAnalysis": "Анализ трендов",
+    "noStatements": "Нет финансовых отчетов",
+    "noStatementsDesc": "Пожалуйста, загрузите финансовые отчеты для продолжения.",
+    "selectCompany": "Выберите компанию"
+  },
+  "companies": {
+    "edit": "Редактировать компанию",
+    "add": "Добавить компанию",
+    "form": {
+      "name": "Название компании",
+      "industry": "Отрасль",
+      "description": "Описание",
+      "email": "Email",
+      "phone": "Телефон"
+    },
+    "confirmDelete": "Вы уверены, что хотите удалить эту компанию?",
+    "title": "Компании",
+    "addNew": "Добавить новую компанию",
+    "noCompanies": "Компании не найдены",
+    "getStarted": "Начать",
+    "addFirst": "Добавьте свою первую компанию"
+  },
+  "sections": {
+    "assets": "Активы",
+    "liabilities": "Обязательства",
+    "equity": "Капитал",
+    "revenue": "Выручка",
+    "expenses": "Расходы",
+    "netIncome": "Чистая прибыль",
+    "operating": "Операционная деятельность",
+    "investing": "Инвестиционная деятельность",
+    "financing": "Финансовая деятельность"
+  },
+  "upload": {
+    "dropzone": "Перетащите файлы сюда или нажмите для выбора",
+    "changeFile": "Изменить файл",
+    "selectFile": "Выбрать файл",
+    "previewData": "Предпросмотр данных",
+    "processingError": "Ошибка обработки файла",
+    "noFilesSelected": "Файлы не выбраны",
+    "title": "Загрузка финансовых данных",
+    "subtitle": "Загрузите оборотно-сальдовую ведомость или транзакции",
+    "trialBalance": "Оборотно-сальдовая ведомость",
+    "trialBalanceHint": "Загрузите файл Excel с оборотно-сальдовой ведомостью",
+    "transactions": "Транзакции",
+    "transactionsHint": "Загрузите файл Excel с транзакциями",
+    "generateStatements": "Сформировать отчеты"
+  },
+  "settings": {
+    "title": "Настройки"
+  },
+  "cashFlow": {
+    "beginningBalance": "Начальный баланс",
+    "endingBalance": "Конечный баланс"
+  },
+  "excel": "Excel",
+  "pdf": "PDF",
+  "comprehensive": "Комплексный отчет"
 }

@@ -1,13 +1,13 @@
 import { FinancialAnalysis } from '../types';
 import { logger } from '../logger';
-import i18next from 'i18next';
+import i18n from '../i18n';
 
 export function analyzeTrends(
   currentPeriod: FinancialAnalysis,
   previousPeriod: FinancialAnalysis,
   metric: string
 ) {
-  const currentLanguage = i18next.language || 'en';
+  const currentLanguage = i18n.language || 'en';
   
   try {
     const currentValue = getMetricValue(currentPeriod, metric);

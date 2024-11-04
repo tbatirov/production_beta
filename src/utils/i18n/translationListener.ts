@@ -2,7 +2,7 @@ import { logger } from '../logger';
 import fs from 'fs';
 import path from 'path';
 import i18next from 'i18next';
-import { OpenAI } from 'openai';
+import OpenAI from 'openai';
 
 const TRANSLATION_DIR = 'src/i18n/locales';
 const SUPPORTED_LANGUAGES = ['en', 'ru', 'uz'];
