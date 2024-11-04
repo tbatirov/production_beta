@@ -32,9 +32,6 @@ export default function Header() {
             >
               {t('common.documentation')}
             </button>
-            <button className="btn-primary">
-              {t('common.export')}
-            </button>
             <LanguageSwitcher />
           </div>
         </div>

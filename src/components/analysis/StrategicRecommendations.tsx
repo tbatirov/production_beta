@@ -8,11 +8,13 @@ import LoadingSpinner from '../LoadingSpinner';
 import { logger } from '../../utils/logger';
 
 interface StrategicRecommendationsProps {
+  id: string,
   ratios: FinancialRatios;
   industry: string;
 }
 
-export default function StrategicRecommendations({ 
+export default function StrategicRecommendations({
+  id,
   ratios, 
   industry 
 }: StrategicRecommendationsProps) {
@@ -26,7 +28,7 @@ export default function StrategicRecommendations({
       try {
         setLoading(true);
         setError(null);
-        const data = await getCachedRecommendations(ratios, industry);
+        const data = await getCachedRecommendations(id, ratios, industry);
         setRecommendations(data);
       } catch (err) {
         logger.error('Error loading recommendations:', err);

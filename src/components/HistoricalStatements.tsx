@@ -106,7 +106,7 @@ export default function HistoricalStatements({ data, onPeriodSelect }: Historica
                       <p className="text-sm text-gray-500">
                         Net Income: {new Intl.NumberFormat('en-US', {
                           style: 'currency',
-                          currency: 'USD'
+                          currency: 'UZS'
                         }).format(netIncome)}
                       </p>
                     </div>

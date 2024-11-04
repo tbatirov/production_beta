@@ -12,12 +12,12 @@ import { useCompany } from '../../contexts/CompanyContext';
 
 interface ComprehensiveReportProps {
   statements: GeneratedStatements;
+  id:string
 }
 
-export default function ComprehensiveReport({ statements }: ComprehensiveReportProps) {
+export default function ComprehensiveReport({ statements,id }: ComprehensiveReportProps) {
   const { t } = useTranslation();
   const { selectedCompany } = useCompany();
-
   // Debug log for incoming props
   logger.info('ComprehensiveReport received statements:', {
     hasStatements: !!statements,
@@ -25,6 +25,7 @@ export default function ComprehensiveReport({ statements }: ComprehensiveReportP
     hasIncomeStatement: !!statements?.incomeStatement,
     hasCashFlow: !!statements?.cashFlow
   });
+
 
   // Early return if no statements
   if (!statements || !statements.balanceSheet || !statements.incomeStatement) {
@@ -43,9 +44,8 @@ export default function ComprehensiveReport({ statements }: ComprehensiveReportP
   }
 
   const ratios = calculateFinancialRatios(statements);
-
   return (
-    <div className="space-y-8 p-6">
+    <div className="space-y-8">
       {/* Ratios Analysis */}
       <div className="bg-white rounded-lg shadow-lg p-6">
         <div className="flex items-center justify-between mb-6">
@@ -106,6 +106,7 @@ export default function ComprehensiveReport({ statements }: ComprehensiveReportP
             </h2>
           </div>
           <StrategicRecommendations
+            id = {id}
             ratios={ratios}
             industry={selectedCompany.industry || 'Unknown'}
           />

@@ -1,4 +1,3 @@
-import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { TrendingUp, TrendingDown, AlertCircle } from 'lucide-react';
 import { analyzeTrends } from '../../utils/ai/trendAnalysis';

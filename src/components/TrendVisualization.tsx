@@ -132,7 +132,7 @@ export default function TrendVisualization({ data, metric }: TrendVisualizationP
           label: (context: any) => {
             return new Intl.NumberFormat('en-US', {
               style: 'currency',
-              currency: 'USD',
+              currency: 'UZS',
               minimumFractionDigits: 0,
               maximumFractionDigits: 0
             }).format(context.raw);
@@ -167,7 +167,7 @@ export default function TrendVisualization({ data, metric }: TrendVisualizationP
           callback: (value: number) => {
             return new Intl.NumberFormat('en-US', {
               style: 'currency',
-              currency: 'USD',
+              currency: 'UZS',
               notation: 'compact',
               maximumFractionDigits: 1
             }).format(value);

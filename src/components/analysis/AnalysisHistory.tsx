@@ -53,7 +53,7 @@ export default function AnalysisHistory({ history, onSelect }: AnalysisHistoryPr
                   <p className="text-sm text-gray-500">
                     Net Income: {new Intl.NumberFormat('en-US', {
                       style: 'currency',
-                      currency: 'USD'
+                      currency: 'UZS'
                     }).format(netIncome)}
                   </p>
                 </div>

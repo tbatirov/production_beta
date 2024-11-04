@@ -7,7 +7,7 @@ import LoadingSpinner from './LoadingSpinner';
 
 export default function CompanyList() {
   const { t } = useTranslation();
-  const { companies, loading, error, loadCompanies, addCompany, deleteCompany } = useCompany();
+  const { companies, loading, error, loadCompanies, addCompany, deleteCompany,updateCompany } = useCompany();
   const [showAddForm, setShowAddForm] = useState(false);
   const [editingCompany, setEditingCompany] = useState(null);
 
@@ -19,6 +19,15 @@ export default function CompanyList() {
       console.error('Failed to add company:', err);
     }
   };
+
+  // const handleUpdateCompany = async (data) => {
+  //   try {
+  //     await updateCompany(data);
+  //     setEditingCompany(false);
+  //   } catch (err) {
+  //     console.error('Failed to add company:', err);
+  //   }
+  // };
 
   const handleDeleteCompany = async (id) => {
     if (window.confirm(t('companies.confirmDelete'))) {
@@ -153,7 +162,7 @@ export default function CompanyList() {
               company={editingCompany}
               onSubmit={async (data) => {
                 try {
-                  await addCompany({ ...editingCompany, ...data });
+                  await updateCompany( editingCompany.id, data );
                   setEditingCompany(null);
                 } catch (err) {
                   console.error('Failed to update company:', err);

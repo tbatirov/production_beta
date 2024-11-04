@@ -72,7 +72,7 @@ export default function HistoricalAnalysis({ analysisHistory }: HistoricalAnalys
                       <p className="text-sm text-gray-500">
                         Net Income: {new Intl.NumberFormat('en-US', {
                           style: 'currency',
-                          currency: 'USD',
+                          currency: 'UZS',
                           minimumFractionDigits: 0,
                           maximumFractionDigits: 0
                         }).format(netIncome)}

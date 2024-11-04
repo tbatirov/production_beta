@@ -10,7 +10,8 @@ import ComprehensiveReport from './analysis/ComprehensiveReport';
 import MonthToMonthComparison from './dashboard/MonthToMonthComparison';
 import HistoricalAnalysis from './dashboard/HistoricalAnalysis';
 import TrendAnalysisReport from './dashboard/TrendAnalysisReport';
-import { logger } from '../utils/logger';
+import {logger} from '../utils/logger';
+import i18n from '../i18n'
 
 export default function CompanyDashboard() {
   const { t } = useTranslation();
@@ -24,6 +25,8 @@ export default function CompanyDashboard() {
   useEffect(() => {
     if (selectedCompany) {
       loadAnalysisHistory();
+      // console.log(selectedCompany)
+
     }
   }, [selectedCompany]);
 
@@ -35,10 +38,13 @@ export default function CompanyDashboard() {
       setError(null);
       const history = await getAnalysisHistory(selectedCompany.id);
       setAnalysisHistory(history);
-      
+      logger.info(`History Analysis for ${selectedCompany}`, history);
       if (history.length > 0) {
         setSelectedAnalysis(history[0]);
+      }else{
+        setSelectedAnalysis(null)
       }
+      
     } catch (err) {
       logger.error('Error loading analysis history:', err);
       setError(err instanceof Error ? err.message : t('common.error'));
@@ -53,9 +59,8 @@ export default function CompanyDashboard() {
         return selectedAnalysis ? (
           <>
             <TabularStatements statements={selectedAnalysis.statements} />
-            <ComprehensiveReport statements={selectedAnalysis.statements} />
-
-                      </>
+            <ComprehensiveReport statements={selectedAnalysis.statements} id={selectedAnalysis.id} />
+          </>
         ) : (
           <div className="text-center py-12 bg-gray-50 rounded-lg">
             <h3 className="text-lg font-medium text-gray-900 mb-2">

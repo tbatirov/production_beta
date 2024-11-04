@@ -40,7 +40,6 @@ export function CompanyProvider({ children }: { children: React.ReactNode }) {
 
   const loadCompanies = async () => {
     if (!user) return;
-    
     try {
       setLoading(true);
       setError(null);
