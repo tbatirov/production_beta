@@ -1,6 +1,6 @@
 import { FinancialAnalysis } from '../types';
 import { logger } from '../logger';
-import i18n from '../i18n';
+import i18n from '../../i18n';
 
 export function analyzeTrends(
   currentPeriod: FinancialAnalysis,

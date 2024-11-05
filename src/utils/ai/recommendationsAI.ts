@@ -2,7 +2,7 @@ import { logger } from '../logger';
 import { getAISettings, getOpenAIKey } from '../settings/apiSettings';
 import { FinancialRatios } from '../types';
 import { ratioBenchmarks } from '../../components/analysis/RatioBenchmarks';
-import i18n from '../i18n';
+import i18n from '../../i18n';
 
 
 interface RecommendationResponse {

@@ -1,114 +1,168 @@
 import { supabase } from './client';
 import { Company } from '../types/supabase';
 import { logger } from '../logger';
+import { GeneratedStatements } from './types';
 
-export const fetchCompanies = async (): Promise<Company[]> => {
+
+export async function createCompany(data: {
+  name: string;
+  industry?: string;
+  description?: string;
+  email?: string;
+  phone?: string;
+  user_id: string;
+}) {
   try {
-
-    const { data: { session }, error: sessionError } = await supabase.auth.getSession();
-    
-    if (sessionError || !session?.user) {
-      throw new Error('Authentication required');
-    }
-
-    // Validate required fields
-    const { data, error } = await supabase
+    const { data: company, error } = await supabase
       .from('companies')
-      .select('*')
-      .eq('users.id',session.user.id)
-      .order('name');
-
-    if (error) {
-      logger.error('Error fetching companies:', error);
-      throw error;
-    }
-
-    return data || [];
-  } catch (error) {
-    logger.error('Failed to fetch companies:', error);
-    throw error;
-  }
-};
-
-export const createCompany = async (
-  company: Omit<Company, 'id' | 'created_at' | 'updated_at'>
-): Promise<Company> => {
-  try {
-    const { data, error } = await supabase
-      .from('companies')
-      .insert([company])
+      .insert([{
+        ...data,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
+      }])
       .select()
       .single();
 
-    if (error) {
-      logger.error('Error creating company:', error);
-      throw error;
-    }
-
-    return data;
+    if (error) throw error;
+    return company;
   } catch (error) {
-    logger.error('Failed to create company:', error);
+    logger.error('Error creating company:', error);
     throw error;
   }
-};
+}
 
-export const updateCompany = async (
-  id: string,
-  updates: Partial<Omit<Company, 'id' | 'created_at'>>
-): Promise<Company> => {
+export async function fetchCompanies(userId: string) {
   try {
     const { data, error } = await supabase
       .from('companies')
-      .update({ ...updates, updated_at: new Date().toISOString() })
+      .select('*')
+      .eq('user_id', userId)
+      .order('created_at', { ascending: false });
+
+    if (error) throw error;
+    return data;
+  } catch (error) {
+    logger.error('Error fetching companies:', error);
+    throw error;
+  }
+}
+
+export async function updateCompany(id: string, data: Partial<{
+  name: string;
+  industry: string;
+  description: string;
+  email: string;
+  phone: string;
+}>) {
+  try {
+    const { data: company, error } = await supabase
+      .from('companies')
+      .update({
+        ...data,
+        updated_at: new Date().toISOString()
+      })
       .eq('id', id)
       .select()
       .single();
 
-    if (error) {
-      logger.error('Error updating company:', error);
-      throw error;
-    }
-
-    return data;
+    if (error) throw error;
+    return company;
   } catch (error) {
-    logger.error('Failed to update company:', error);
+    logger.error('Error updating company:', error);
     throw error;
   }
-};
+}
 
-export const deleteCompany = async (id: string): Promise<void> => {
+export async function deleteCompany(id: string) {
   try {
     const { error } = await supabase
       .from('companies')
       .delete()
       .eq('id', id);
 
-    if (error) {
-      logger.error('Error deleting company:', error);
-      throw error;
-    }
+    if (error) throw error;
   } catch (error) {
-    logger.error('Failed to delete company:', error);
+    logger.error('Error deleting company:', error);
     throw error;
   }
-};
+}
 
-export const getCompanyById = async (id: string): Promise<Company | null> => {
+export async function saveFinancialStatement(data: {
+  company_id: string;
+  user_id: string;
+  period: string;
+  statements: GeneratedStatements;
+  metadata?: Record<string, any>;
+}) {
   try {
-    const { data, error } = await supabase
-      .from('companies')
-      .select('*')
-      .eq('id', id)
+    const { data: statement, error } = await supabase
+      .from('financial_statements')
+      .insert([{
+        company_id: data.company_id,
+        user_id: data.user_id,
+        period: data.period,
+        balance_sheet: data.statements.balanceSheet,
+        income_statement: data.statements.incomeStatement,
+        cash_flow: data.statements.cashFlow,
+        metadata: data.metadata || {},
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString()
+      }])
+      .select()
       .single();
 
-    if (error) {
-      logger.error('Error fetching company:', error);
-      throw error;
-    }
-
-    return data;
+    if (error) throw error;
+    return statement;
   } catch (error) {
-    logger.error('Failed to fetch company:', error);
+    logger.error('Error saving financial statement:', error);
     throw error;
   }
-};
+}
+
+export async function fetchFinancialStatements(companyId: string) {
+  try {
+    const { data, error } = await supabase
+      .from('financial_statements')
+      .select('*')
+      .eq('company_id', companyId)
+      .order('period', { ascending: false });
+
+    if (error) throw error;
+    return data;
+  } catch (error) {
+    logger.error('Error fetching financial statements:', error);
+    throw error;
+  }
+}
+
+export async function fetchLatestFinancialStatement(companyId: string) {
+  try {
+    const { data, error } = await supabase
+      .from('financial_statements')
+      .select('*')
+      .eq('company_id', companyId)
+      .order('period', { ascending: false })
+      .limit(1)
+      .single();
+
+    if (error) throw error;
+    return data;
+  } catch (error) {
+    logger.error('Error fetching latest financial statement:', error);
+    throw error;
+  }
+}
+
+export async function deleteFinancialStatement(id: string) {
+  try {
+    const { error } = await supabase
+      .from('financial_statements')
+      .delete()
+      .eq('id', id);
+
+    if (error) throw error;
+  } catch (error) {
+    logger.error('Error deleting financial statement:', error);
+    throw error;
+  }
+}

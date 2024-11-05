@@ -1,7 +1,7 @@
 import { FinancialData } from '../types';
 import { logger } from '../logger';
 import { getAISettings, getOpenAIKey } from '../settings/apiSettings';
-import i18n from '../i18n';
+import i18n from '../../i18n';
 
 
 export async function analyzeCashFlow(data: FinancialData) {
