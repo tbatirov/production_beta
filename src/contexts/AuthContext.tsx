@@ -1,7 +1,8 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { supabase } from '../utils/supabase';
+import { supabase } from '../utils/supabase/client';
 import { logger } from '../utils/logger';
+import { Navigate } from 'react-router-dom';
 
 interface User {
   id: string;
@@ -123,8 +124,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       const { error } = await supabase.auth.signOut();
       if (error) throw error;
-
       setUser(null);
+      return <Navigate to="/login" />;
       logger.info('Sign out successful');
     } catch (error) {
       logger.error('Sign out error:', error);

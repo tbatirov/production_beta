@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { useAuth } from './AuthContext';
-import { createCompany, fetchCompanies, updateCompany, deleteCompany } from '../utils/supabase';
+import { createCompany, fetchCompanies, updateCompany, deleteCompany } from '../utils/supabase/companies';
 import { logger } from '../utils/logger';
 import { createClient } from '@supabase/supabase-js';
 

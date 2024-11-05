@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useAuth } from '../contexts/AuthContext';
 import { TrendingUp } from 'lucide-react';
 import LanguageSwitcher from './LanguageSwitcher';
 import DocumentationModal from './ui/DocumentationModal';
@@ -7,7 +8,7 @@ import DocumentationModal from './ui/DocumentationModal';
 export default function Header() {
   const { t } = useTranslation();
   const [isDocModalOpen, setIsDocModalOpen] = useState(false);
-
+  const { signOut } = useAuth();
   return (
     <header className="bg-white border-b border-gray-200">
       <div className="container mx-auto px-4 py-4">
@@ -31,6 +32,10 @@ export default function Header() {
               onClick={() => setIsDocModalOpen(true)}
             >
               {t('common.documentation')}
+            </button>
+            <button className='btn-primary'
+             onClick={signOut}>
+              {t('auth.signOut')}
             </button>
             <LanguageSwitcher />
           </div>
